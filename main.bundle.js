@@ -321,13 +321,13 @@ var AppService = /** @class */ (function () {
         this.authenticated = false;
     }
     AppService.prototype.getCurrentUser = function () {
-        this.http.get('http://localhost:8081/api/user/me', { withCredentials: true }).subscribe(function (response) {
+        this.http.get('https://lmndev.herokuapp.com/api/user/me', { withCredentials: true }).subscribe(function (response) {
             return (response);
         });
     };
     AppService.prototype.isAuthenticate = function () {
         var _this = this;
-        this.http.get('http://localhost:8081/api/user/me', { withCredentials: true }).subscribe(function (response) {
+        this.http.get('https://lmndev.herokuapp.com/api/user/me', { withCredentials: true }).subscribe(function (response) {
             if (response != null) {
                 if (response['name']) {
                     _this.authenticated = true;
@@ -344,7 +344,7 @@ var AppService = /** @class */ (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpHeaders */](credentials ? {
             authorization: 'Basic ' + btoa(credentials.username + ':' + credentials.password)
         } : {});
-        this.http.get('http://localhost:8081/api/user/me', { headers: headers, withCredentials: true }).subscribe(function (response) {
+        this.http.get('https://lmndev.herokuapp.com/api/user/me', { headers: headers, withCredentials: true }).subscribe(function (response) {
             if (response != null) {
                 if (response['name']) {
                     _this.authenticated = true;
@@ -514,10 +514,10 @@ var HistoryService = /** @class */ (function () {
         this.httpService = httpService;
     }
     HistoryService.prototype.getAll = function () {
-        return this.httpService.get("http://localhost:8081/api/history", { withCredentials: true });
+        return this.httpService.get("https://lmndev.herokuapp.com/api/history", { withCredentials: true });
     };
     HistoryService.prototype.save = function (history) {
-        return this.httpService.post("http://localhost:8081/api/history", history, { withCredentials: true });
+        return this.httpService.post("https://lmndev.herokuapp.com/api/history", history, { withCredentials: true });
     };
     HistoryService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -1257,7 +1257,7 @@ var NavbarComponent = /** @class */ (function () {
     };
     NavbarComponent.prototype.logout = function () {
         var _this = this;
-        this.http.post('http://localhost:8081/logout', {}, { withCredentials: true }).finally(function () {
+        this.http.post('https://lmndev.herokuapp.com/logout', {}, { withCredentials: true }).finally(function () {
             _this.appService.authenticated = false;
             _this.router.navigateByUrl('/login');
         }).subscribe();
